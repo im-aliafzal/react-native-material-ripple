@@ -86,13 +86,13 @@ export default class Ripple extends PureComponent {
     this.setState({ width, height });
   }
 
-  onPress(event) {
+  onPressIn(event) {
     let { ripples } = this.state;
-    let { onPress, rippleSequential } = this.props;
+    let { onPressIn, rippleSequential } = this.props;
 
     if (!rippleSequential || !ripples.length) {
-      if ('function' === typeof onPress) {
-        requestAnimationFrame(() => onPress(event));
+      if ('function' === typeof onPressIn) {
+        requestAnimationFrame(() => onPressIn(event));
       }
 
       this.startRipple(event);
@@ -109,11 +109,11 @@ export default class Ripple extends PureComponent {
     this.startRipple(event);
   }
 
-  onPressIn(event) {
-    let { onPressIn } = this.props;
+  onPress(event) {
+    let { onPress } = this.props;
 
-    if ('function' === typeof onPressIn) {
-      onPressIn(event);
+    if ('function' === typeof onPress) {
+      onPress(event);
     }
   }
 
